@@ -1,23 +1,26 @@
 #include "CalcMain.h"
 #include "Supplier.h"
 #include "Predicate.h"
-#include <iostream>
 #include "Calculator.h"
+#include "ClearIn.h"
+#include <iostream>
+
 using namespace std;
 
 void CalcMain::run(double& result)
 {
-	Supplier supplier;
-	Predicate predicate;
+	Supplier supplier;																				
+	Predicate predicate;																			
 	Calculator calculator;
+	ClearIn clearIn;																				// reset and clear input stream
 
-	double x, y;
-	char o;
-	bool isBreak = false;
+	double x, y;																					// variables
+	char o;																							// operation sign
+	bool isBreak = false;																			// exit flag
 
-	while (!isBreak)
+	while (!isBreak)																				// first operation
 	{
-		result = 0.0; x = 0; y = 0; o = '.';
+		result = 0.0; x = 0; y = 0; o = '.';														// default values
 		if (supplier.get(x, y, o, true)) {
 			if (calculator.calculate(x, y, o)) {
 				result = x;
@@ -37,13 +40,14 @@ void CalcMain::run(double& result)
 			continue;
 		}
 
-		while (!isBreak) {
+		while (!isBreak) {																			// next operations
 			if (supplier.get(result, y, o, false)) {
 				if (calculator.calculate(result, y, o)) {
 					cout << "* Current result: " << result << endl;
 				}
 				else {
 					if (predicate.isClear(o)) {
+						clearIn.clear();
 						break;
 					}
 					if (predicate.isQuit(o)) {

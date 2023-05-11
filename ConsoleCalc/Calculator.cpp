@@ -1,5 +1,6 @@
 #include "Calculator.h"
 #include <iostream>
+
 using namespace std;
 
 bool Calculator::calculate(double& x, double& y, char& operation) {

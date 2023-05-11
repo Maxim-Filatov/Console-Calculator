@@ -1,15 +1,16 @@
 #include "Supplier.h"
 #include "Predicate.h"
-
+#include "ClearIn.h"
 #include <iostream>
+
 using namespace std;
 
 bool getDouble(double&);
 bool getOperation(char&);
 
-static int IGNORE = 1024;
+ClearIn clearIn;
 
-
+// класс, запрашивающий переменную(-ые) в зависимости от значения логической переменной getX
 bool Supplier::get(double& first, double& second, char& operation, bool getX)
 {
     Predicate predicate;
@@ -47,8 +48,7 @@ bool getDouble(double& value)
     double n;
     cin >> n;
     if (cin.fail()) {
-        cin.clear();
-        cin.ignore(IGNORE, '\n');
+        clearIn.clear();
         return false;
     }
     value = n;
@@ -65,7 +65,6 @@ bool getOperation(char& value)
             return true;
         }
     }
-    cin.clear();
-    cin.ignore(IGNORE, '\n');
+    clearIn.clear();
     return false;
 }

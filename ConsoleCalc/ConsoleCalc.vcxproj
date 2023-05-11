@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="CalcMain.cpp" />
     <ClCompile Include="Calculator.cpp" />
+    <ClCompile Include="ClearIn.cpp" />
     <ClCompile Include="ConsoleCalc.cpp" />
     <ClCompile Include="Predicate.cpp" />
     <ClCompile Include="Supplier.cpp" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="CalcMain.h" />
     <ClInclude Include="Calculator.h" />
+    <ClInclude Include="ClearIn.h" />
     <ClInclude Include="Predicate.h" />
     <ClInclude Include="Supplier.h" />
   </ItemGroup>
